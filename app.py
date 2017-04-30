@@ -1,9 +1,5 @@
-from flask import Flask, request
-from flask import render_template, redirect, url_for, request, g
-
-from flask_restful import Resource, Api
+from flask import Flask, render_template, request
 from sqlalchemy import create_engine
-from json import dumps
 
 #Create a engine for connecting to SQLite3.
 #Assuming salaries.db is in your app root folder
@@ -11,7 +7,6 @@ from json import dumps
 e = create_engine('sqlite:///salaries.db')
 
 app = Flask(__name__)
-api = Api(app)
 
 @app.route('/', methods=['GET', 'POST'])
 def get_score():
@@ -37,7 +32,6 @@ def get_score():
         print(salary)
         return render_template('score.html', salary=salary)    
     return render_template('index.html')
-
 
 if __name__ == '__main__':
     app.run(debug=True)
