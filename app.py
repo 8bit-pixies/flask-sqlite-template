@@ -42,24 +42,3 @@ def get_score():
 if __name__ == '__main__':
     app.run(debug=True)
 
-"""
-class Departments_Meta(Resource):
-    def get(self):
-        #Connect to databse
-        conn = e.connect()
-        #Perform query and return JSON data
-        query = conn.execute("select distinct DEPARTMENT from salaries")
-        return {'departments': [i[0] for i in query.cursor.fetchall()]}
-
-class Departmental_Salary(Resource):
-    def get(self, department_name):
-        conn = e.connect()
-        query = conn.execute("select * from salaries where Department='%s'"%department_name.upper())
-        #Query the result and get cursor.Dumping that data to a JSON is looked by extension
-        result = {'data': [dict(zip(tuple (query.keys()) ,i)) for i in query.cursor]}
-        return result
-    #We can have PUT,DELETE,POST here. But in our API GET implementation is sufficient
-       
-api.add_resource(Departmental_Salary, '/dept/<string:department_name>')
-api.add_resource(Departments_Meta, '/departments')
-"""
